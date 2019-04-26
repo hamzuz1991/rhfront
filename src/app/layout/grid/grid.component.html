@@ -1,0 +1,33 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Neauveu Entrprise'" [icon]="'fa-edit'"></app-page-header>
+
+    <div class="row">
+        <div class="col-lg-6">
+
+
+
+            <form role="form" [formGroup]="departementForm" (ngSubmit)="onSubmit()">
+                <fieldset class="form-group">
+                    <label>Entreprise</label>
+                    <select multiple="" class="form-control" formControlName="entreprise" >
+                        <option *ngFor="let data of datas" value="{{data.id_entreprise}}">{{data.name_entrep}}</option>
+
+
+                    </select>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Nom Departement </label>
+                    <input type="text" type="text" class="form-control" formControlName="departementName"
+                        placeholder="inputname entreprise">
+
+                </fieldset>
+
+
+                <button type="submit" class="btn btn-secondary">Ajouter</button>
+            </form>
+
+        </div>
+
+    </div>
+    <!-- /.row -->
+</div>

@@ -1,0 +1,97 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Neauveu emlpoyer'" [icon]="'fa-edit'"></app-page-header>
+
+    <div class="row">
+        <div class="col-lg-6">
+
+            <form role="form" [formGroup]="emplyerForm" (ngSubmit)="onSubmit()">
+                <fieldset class="form-group">
+                    <label>Name</label>
+                    <input type="text" type="text" class="form-control" formControlName="firstName"
+                        placeholder="input  name">
+
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label>Last_Name</label>
+                    <input type="text" class="form-control" formControlName="LastName" placeholder="input LAast name">
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" formControlName="Email" class="form-control"
+                        placeholder="email@example.com">
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Tel :</label>
+                    <input type="tel" class="form-control" formControlName="Numtel" placeholder="input Numtel">
+                </fieldset>
+
+
+                <fieldset class="form-group">
+                    <label>Etat</label>
+                    <select multiple="" class="form-control" formControlName="Etat">
+                        <option value="1">actif</option>
+                        <option value="0">inactif</option>
+
+
+                    </select>
+                </fieldset>
+
+
+                <fieldset class="form-group">
+                    <label>Role</label>
+                    <select multiple="" class="form-control" formControlName="ROLE">
+                        <option value="DIRECTEUR_GENRALE">DIRECTEUR_GENRALE</option>
+                        <option value="DIRECTEUR_TECHNIQUE">DIRECTEUR_TECHNIQUE</option>
+                        <option value="CHEF_DEPARTEMENT">CHEF_DEPARTEMENT</option>
+                        <option value="ADMINISTRATEUR">ADMINISTRATEUR</option>
+                        <option value="INGENIEUR">INGENIEUR</option>
+                        <option value="TECHNICIEN"> TECHNICIEN</option>
+                        <option value="OUVRIER"> OUVRIER</option>
+
+                    </select>
+                </fieldset>
+
+
+
+                <fieldset class="form-group">
+                    <label>Photo</label>
+                    <input type="file" accept="image/*" (change)="processFile($event)"  name="photo" formControlName="photo" class="form-control"
+                        >
+                </fieldset>
+
+                <button type="submit" class="btn btn-secondary">Ajouter</button>
+            </form>
+
+        </div>
+        <div class="col-lg-4">
+            <form role="form" [formGroup]="affectationenterpForm" (ngSubmit)="onSubmit1()">
+                <fieldset class="form-group">
+                    <label>Entreprise</label>
+                    <select multiple="" class="form-control" formControlName="val">
+                        <option *ngFor="let data of datas" value="{{data.id_entreprise}}">{{data.name_entrep}}</option>
+
+
+                    </select>
+
+                </fieldset>
+                <button type="submit" class="btn btn-secondary">Affecter</button>
+
+            </form>
+            <form role="form" [formGroup]="affectationdepForm" (ngSubmit)="onSubmit2()">
+                <fieldset class="form-group">
+                    <label>Departement</label>
+                    <select multiple="" class="form-control" formControlName="departement">
+                        <option *ngFor="let data of datas1" value="{{data.id_dep}}">{{data.nom_dep}}</option>
+
+
+                    </select>
+                    <p>il faut affecter dans une entreprise d'abord</p>
+                </fieldset>
+                <button type="submit" class="btn btn-secondary">Affecter</button>
+                <!-- /.row -->
+            </form>
+        </div>
+    </div>
+</div>
